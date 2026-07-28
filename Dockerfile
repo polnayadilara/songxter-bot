@@ -1,16 +1,16 @@
 FROM python:3.11-slim
 
-# Устанавливаем FFmpeg прямо на облачный сервер
+# Устанавливаем FFmpeg
 RUN apt-get update && apt-get install -y ffmpeg
 
 WORKDIR /app
 
-# Копируем и устанавливаем библиотеки
+# Устанавливаем библиотеки
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем нашего бота
-COPY bot.py .
+# Копируем ВСЕ файлы (включая bot.py и cookies.txt)
+COPY . .
 
 # Запускаем
 CMD ["python", "bot.py"]
