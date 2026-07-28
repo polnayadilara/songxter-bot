@@ -37,9 +37,10 @@ def handle_message(message):
 
     try:
         # 1. Настройки для скачивания
-        ydl_opts = {
+ydl_opts = {
             'format': 'bestaudio/best',
-            'cookiefile': 'cookies.txt',  
+            'cookiefile': 'cookies.txt',
+            'extractor_args': {'youtube': ['player_client=android']}, # <--- ДОБАВЬ ВОТ ЭТУ СТРОЧКУ
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
