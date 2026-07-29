@@ -9,7 +9,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем ВСЕ файлы (включая bot.py и cookies.txt)
+# ПРИНУДИТЕЛЬНО ОБНОВЛЯЕМ YT-DLP ДО САМОЙ СВЕЖЕЙ ВЕРСИИ
+RUN pip install --no-cache-dir --upgrade yt-dlp
+
+# Копируем ВСЕ файлы
 COPY . .
 
 # Запускаем
